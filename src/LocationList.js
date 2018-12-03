@@ -21,13 +21,14 @@ class LocationList extends Component {
         const {value} = event.target;
         const locations = [];
         this.state.locations.forEach(function (location) {
-            if (location.name.toLowerCase().indexOf(value.toLowerCase()) >= 0) {
+            if (location.name.toLowerCase().indexOf(value.toLowerCase()) !== -1) {
                 location.marker.setVisible(true);
                 locations.push(location);
             } else {
                 location.marker.setVisible(false);
             }
         });
+        console.log(locations);
         this.setState({
             'flocations': locations,
             'query': value
@@ -38,7 +39,7 @@ class LocationList extends Component {
         this.setState({
             'locations': this.props.locations
         });
-        if(this.state.flocations.length === 0){
+        if(this.state.flocations.length === 0 && this.state.query === ''){
             this.setState({
                 'flocations': this.props.locations
             });
@@ -58,10 +59,12 @@ class LocationList extends Component {
             );
         });
         return (
-            <div>
-                <h3 className="title">Neighborhood Map</h3>
+            <div>  
                 <input role="search" aria-labelledby="filter" id="search-field" className="search-field" type="text" placeholder="Search Location"
                        value={this.state.query} onChange={this.filterLocations}/>
+                
+                { this.state.flocations.length === 0 && this.state.query !== '' && (<ul><li>Not Found</li></ul>)}
+                
                 <ul>
                     {this.state.suggestions && locationlist}
                 </ul>

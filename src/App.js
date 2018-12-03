@@ -20,7 +20,8 @@ class App extends Component {
             'allLocations': [],
             'map': '',
             'infowindow': '',
-            'prevmarker': ''
+            'prevmarker': '',
+            'toggle': false
         };
 
         // retain object instance when used in the function
@@ -179,7 +180,11 @@ class App extends Component {
     render() {
         return (
             <main>
-                <div className="sidebar">
+                <div className="header">
+                    <h3 className="title" >Neighborhood Map</h3>
+                    <img onClick={(e) => this.setState({ toggle: !this.state.toggle})} src={require('./toggle.png')} alt="toggle sidebar" className="toggle" />
+                </div>
+                <div className={"sidebar " + (this.state.toggle && "sidebar-close")} >
                     <LocationList locations={this.state.allLocations} openInfoWindow={this.openInfoWindow}
                               closeInfoWindow={this.closeInfoWindow}/>
                 </div>
@@ -197,7 +202,7 @@ function loadJS(src) {
     script.src = src;
     script.async = true;
     script.onerror = () => {
-        document.write("Google Maps can't be loaded");
+        alert("Google Maps can't be loaded");
     };
     ref.parentNode.insertBefore(script, ref);
 }

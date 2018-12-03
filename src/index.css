@@ -26,7 +26,7 @@ ul {
   overflow: auto;
   padding: 0px;
   margin: 0;
-  max-height: calc(100vh - 120px);
+  max-height: calc(100vh - 110px);
   overflow: auto;
 }
 
@@ -59,14 +59,38 @@ ul li:hover {
   background-color: black;
   width: 250px;
   position: fixed;
-  top: 0;
+  top: 50px;
   left: 0;
   bottom: 0;
   z-index: 1;
+  transition: left 0.5s ease;
 }
 
 .title{
-  text-align: center;
   color: #fff;
   font-weight: 500;
+  margin: 10px;
+  display: inline;
+}
+
+.header{
+  background-color: #000;
+  width: 100%;
+  height: 50px;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 2;
+  display: flex;
+}
+
+.sidebar-close{
+  left: -250px;
+  
+}
+
+.toggle{
+  max-height: 30px;
+  margin: 10px;
+  cursor: pointer;
 }
