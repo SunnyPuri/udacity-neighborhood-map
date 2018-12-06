@@ -11,7 +11,7 @@
 * `npm install`
 * `npm run start`
 
-## Fearure
+## Feature
 
 A neighborhood map is a single page application where you can feature a map of your neighborhood. It is using FoureSquare API's to highlight the nearby shops in the map.
 
